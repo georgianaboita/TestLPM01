@@ -31,17 +31,17 @@ exports.handle = (client) => {
         }
     })
 
-    const handleGreeting = client.createStep({
-        satisfied() {
-            return false
-        },
+    //const handleGreeting = client.createStep({
+    //    satisfied() {
+    //        return false
+    //    },
 
-        prompt() {
-            //client.addResponse('greeting')
-            client.addTextResponse('Hello world, I mean human')
-            client.done()
-        }
-    })
+    //    prompt() {
+    //        //client.addResponse('greeting')
+    //        client.addTextResponse('Hello world, I mean human')
+    //        client.done()
+    //    }
+    //})
 
     const collectCustomerID = client.createStep({
         satisfied() {
@@ -50,6 +50,7 @@ exports.handle = (client) => {
 
         extractInfo() {
             const custId = firstOfEntityRole(client.getMessagePart(), 'custId')
+            console.log('custId = ', custId)
 
             if (custId) {
                 client.updateConversationState({
@@ -103,7 +104,6 @@ exports.handle = (client) => {
         streams: {
             
             main: 'onboarding',
-            greeting: handleGreeting,
             goodbye: handleGoodbye,
             onboarding: collectCustomerID,
             end: [untrained],
