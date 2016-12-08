@@ -12,7 +12,7 @@ const firstOfEntityRole = function (message, entity, role) {
     return valsForRole ? valsForRole[0] : null
 }
 
-exports.handle = (client) => {
+exports.handle = function handle(client) {
     // Create steps
     const sayHello = client.createStep({
         satisfied() {
