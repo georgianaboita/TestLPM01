@@ -52,8 +52,8 @@ exports.handle = function handle(client) {
         },
 
         extractInfo() {
-            const custId = firstOfEntityRole(client.getMessagePart(), 'number/custId')
-            console.log('number/custId = ', custId)
+            const custId = firstOfEntityRole(client.getMessagePart(), 'custId')
+            console.log('custId = ', custId)
 
             if (custId) {
                 client.updateConversationState({
